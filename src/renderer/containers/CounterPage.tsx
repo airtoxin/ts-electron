@@ -3,6 +3,9 @@ import { Dispatch } from 'redux';
 import { connect } from 'react-redux';
 import { GlobalState } from '../modules';
 import { ActionDispatcher } from '../modules/counter';
+import styles from './CounterPage.css';
+
+console.log("@styles", styles);
 
 export interface Props {
   count: number;
@@ -12,7 +15,7 @@ export interface Props {
 export class CounterPage extends React.Component<Props> {
   render() {
     return (
-      <div>
+      <div className={styles.s}>
         <h1>count: {this.props.count}</h1>
         <button onClick={() => this.props.dispatchers.increment(1)}>increment +1</button>
         <button onClick={() => this.props.dispatchers.decrement(1)}>decrement -1</button>

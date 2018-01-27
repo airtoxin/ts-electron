@@ -55,6 +55,7 @@
     "@types/react-router": "^4.0.21",
     "@types/react-router-redux": "^5.0.11",
     "@types/redux-thunk": "^2.1.0",
+    "css-loader": "^0.28.9",
     "electron": "^1.7.11",
     "electron-builder": "^19.55.2",
     "electron-webpack": "^1.11.0",
