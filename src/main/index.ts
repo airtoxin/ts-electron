@@ -1,11 +1,12 @@
 import { app, BrowserWindow } from "electron";
+import installExtension, { REACT_DEVELOPER_TOOLS, REDUX_DEVTOOLS } from 'electron-devtools-installer';
 
 const isDevelopment = process.env.NODE_ENV !== "production";
 // Global reference to mainWindow
 // Necessary to prevent win from being garbage collected
 let mainWindow: BrowserWindow | null;
 
-function createMainWindow() {
+async function createMainWindow() {
   // Construct new BrowserWindow
   const window = new BrowserWindow();
 
@@ -17,6 +18,10 @@ function createMainWindow() {
     : `file://${__dirname}/index.html`;
 
   if (isDevelopment) {
+    await Promise.all([
+      installExtension(REACT_DEVELOPER_TOOLS),
+      installExtension(REDUX_DEVTOOLS),
+    ]);
     window.webContents.openDevTools();
   }
   window.maximize();
@@ -36,14 +41,14 @@ app.on("window-all-closed", () => {
   if (process.platform !== "darwin") app.quit();
 });
 
-app.on("activate", () => {
+app.on("activate", async () => {
   // On macOS it is common to re-create a window
   // even after all windows have been closed
-  if (mainWindow === null) mainWindow = createMainWindow();
+  if (mainWindow === null) mainWindow = await createMainWindow();
 });
 
 // Create main BrowserWindow when electron is ready
-app.on("ready", () => {
+app.on("ready", async () => {
   // window
-  mainWindow = createMainWindow();
+  mainWindow = await createMainWindow();
 });
