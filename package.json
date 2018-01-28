@@ -5,7 +5,11 @@
   "scripts": {
     "start": "run-p dev",
     "dev": "electron-webpack dev",
-    "compile": "electron-webpack"
+    "compile": "electron-webpack",
+    "clean-install": "rimraf node_modules && yarn install",
+    "dist": "yarn clean-install && yarn compile && electron-builder",
+    "dist:dir": "yarn dist --dir -c.compression=store -c.mac.identity=null",
+    "release": "yarn clean-install && yarn compile && electron-builder --publish always"
   },
   "author": "airtoxin <airtoxin@icloud.com>",
   "license": "MIT",
@@ -14,8 +18,25 @@
       "webpackConfig": "webpack.renderer.additions.js"
     }
   },
+  "build": {
+    "appId": "com.github.airtoxin.ts-electron",
+    "mac": {
+      "category": "development",
+      "target": [
+        "zip",
+        "dmg"
+      ]
+    },
+    "publish": [
+      {
+        "provider": "github",
+        "owner": "airtoxin",
+        "repo": "ts-electron",
+        "releaseType": "release"
+      }
+    ]
+  },
   "dependencies": {
-    "electron": "^1.7.11",
     "electron-devtools-installer": "^2.2.3",
     "history": "^4.7.2",
     "react": "^16.2.0",
@@ -37,6 +58,7 @@
     "@types/react-router-redux": "^5.0.11",
     "@types/redux-thunk": "^2.1.0",
     "css-loader": "^0.28.9",
+    "electron": "^1.7.11",
     "electron-builder": "^19.55.2",
     "electron-webpack": "^1.9.0",
     "electron-webpack-ts": "^1.3.0",
