@@ -1,11 +1,8 @@
 module.exports = {
-  resolve: {
-    extensions: ['.cssmodule']
-  },
   module: {
     rules: [
       {
-        test: /\.cssmodule$/,
+        test: /\.cssmodules$/,
         use: [
           {
             loader: 'style-loader'

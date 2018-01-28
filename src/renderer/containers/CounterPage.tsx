@@ -3,7 +3,7 @@ import { Dispatch } from 'redux';
 import { connect } from 'react-redux';
 import { GlobalState } from '../modules';
 import { ActionDispatcher } from '../modules/counter';
-import * as styles from './CounterPage.cssmodule';
+import * as styles from './CounterPage.cssmodules';
 
 export interface Props {
   count: number;
