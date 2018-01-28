@@ -13,7 +13,7 @@ export interface Props {
 export class CounterPage extends React.Component<Props> {
   render() {
     return (
-      <div className={[styles.s, this.props.count % 5].join(' ')}>
+      <div className={styles[`n${this.props.count % 5}`]}>
         <h1>count: {this.props.count}</h1>
         <button onClick={() => this.props.dispatchers.increment(1)}>increment +1</button>
         <button onClick={() => this.props.dispatchers.decrement(1)}>decrement -1</button>

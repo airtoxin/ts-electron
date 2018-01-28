@@ -1,17 +1,19 @@
-.s {
-  &:global(.0) {
-    background-color: red;
-  }
-  &:global(.1) {
-    background-color: gray;
-  }
-  &:global(.2) {
-    background-color: blue;
-  }
-  &:global(.3) {
-    background-color: purple;
-  }
-  &:global(.4) {
-    background-color: green;
-  }
+.n0 {
+  background-color: red;
+}
+
+.n1 {
+  background-color: blue;
+}
+
+.n2 {
+  background-color: yellow;
+}
+
+.n3 {
+  background-color: green;
+}
+
+.n4 {
+  background-color: purple;
 }
