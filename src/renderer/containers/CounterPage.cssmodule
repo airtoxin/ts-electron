@@ -1,0 +1,17 @@
+.s {
+  &:global(.0) {
+    background-color: red;
+  }
+  &:global(.1) {
+    background-color: gray;
+  }
+  &:global(.2) {
+    background-color: blue;
+  }
+  &:global(.3) {
+    background-color: purple;
+  }
+  &:global(.4) {
+    background-color: green;
+  }
+}
